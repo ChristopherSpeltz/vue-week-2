@@ -123,8 +123,8 @@
 
         <div class="card-body">
           <h3>
-            <!-- TODO Display number of records -->
-            records
+            <!-- Display number of records -->
+            {{ totalRecordsMessage }}
           </h3>
 
           <div id="records">
@@ -151,12 +151,8 @@
         <h2 class="card-header">Summary</h2>
 
         <div class="card-body">
-          <!-- TODO add computed property to calculate the total hours -->
-          <p>
-            You have practiced a total of
-            <!-- TODO display total hours -->
-            hours
-          </p>
+          <!-- add computed property to calculate the total hours -->
+          <p>You have practiced a total of {{ totalHours }} hours</p>
 
           <!-- Challenge question! Display a list of the total hours for each type.  -->
         </div>
@@ -223,12 +219,36 @@
               };
 
               this.activityRecords.push(record);
-              console.log(this.activityRecords);
+              //   sort activty records
+              this.activityRecords.sort(function (r1, r2) {
+                // soft by older records first
+                return r1.date.getTime() - r2.date.getTime();
+              });
             }
           },
-          shortDate(date){
-            return new Intl.DateTimeFormat('en-US', {timezone: 'UTC'}).format(date)
-          }
+          shortDate(date) {
+            return new Intl.DateTimeFormat("en-US", { timezone: "UTC" }).format(
+              date
+            );
+          },
+        },
+        computed: {
+          totalRecordsMessage() {
+            let numberOfRecords = this.activityRecords.length;
+
+            if (numberOfRecords === 1) {
+              return "1 record";
+            } else {
+              return numberOfRecords + " records";
+            }
+          },
+          totalHours() {
+            let total = 0;
+            this.activityRecords.forEach(function (record) {
+              total = total + record.hours;
+            });
+            return total;
+          },
         },
       });
 
