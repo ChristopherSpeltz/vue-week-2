@@ -2,3 +2,18 @@
     max-height: 250px;
     overflow: scroll;
 }
+
+.javascript {
+    background-color: greenyellow;
+    font-style: bold;
+}
+
+.python {
+    background-color: pink;
+    font-weight: bold;
+}
+
+.vue {
+    background-color: orange;
+    font-weight: bold;
+}

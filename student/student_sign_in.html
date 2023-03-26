@@ -14,7 +14,7 @@
 
   <body>
     <div id="app" v-cloak>
-      <!-- TODO show errors from form validation -->
+      <!-- show errors from form validation -->
       <div class="alert alert-danger" v-if="errors.length > 0">
         <ul>
           <li v-for="error in errors">{{ error}}</li>
@@ -26,15 +26,15 @@
 
         <div class="form-group">
           <label for="name">Name</label>
-          <!-- TODO v-model newStudentName -->
+          <!-- v-model newStudentName -->
           <input id="name" class="form-control" v-model.trim="newStudentName" />
         </div>
         <div class="form-group">
           <label for="starID">Star ID</label>
-          <!-- TODO v-model newStarID -->
+          <!-- v-model newStarID -->
           <input id="starID" class="form-control" v-model.trim="newStarID" />
         </div>
-        <!-- TODO v-on:click event handler -->
+        <!-- v-on:click event handler -->
         <button class="btn btn-primary" v-on:click="addStudent">Add</button>
       </div>
 
@@ -48,7 +48,7 @@
               <th>Present?</th>
             </tr>
 
-            <!-- TODO create table rows 
+            <!-- create table 
                    Each row will have a checkbox, bound to the app's data 
                    When the checkbox is checked/unchecked, the student will be signed in/out -->
 
@@ -70,7 +70,7 @@
         </div>
       </div>
 
-      <!-- TODO show a message when student arrives or leaves  -->
+      <!-- show a message when student arrives or leaves  -->
 
       <div v-if="mostRecentStudent.name">
         <div class="alert alert-primary" v-if="mostRecentStudent.present">
@@ -84,7 +84,7 @@
     </div>
 
     <script>
-      // TODO Vue app
+      // Vue app
 
       let app = Vue.createApp({
         data() {
@@ -92,9 +92,9 @@
             newStudentName: "",
             newStarID: "",
             students: [
-              { name: "A. Student", starID: "AA1234", present: false },
-              { name: "B. Student", starID: "BB1234", present: false },
-              { name: "C. Student", starID: "CC1234", present: false },
+              { name: "Puff Daddy", starID: "6465151", present: false },
+              { name: "Andre 3000", starID: "6546465", present: false },
+              { name: "Jay Z", starID: "788455", present: false },
             ],
             errors: [],
             mostRecentStudent: {}, // most recent student who left
@@ -112,7 +112,7 @@
               this.errors.push("StarID must be entered");
             }
 
-            // todo add other checks here if needed
+            // add other checks here if needed
 
             if (this.errors.length == 0) {
               let student = {
@@ -137,8 +137,6 @@
 
                 // retrun 0 if order is equivalent
                 return 0;
-
-                // optional - if names are the same, sort by starId
 
               });
             }
