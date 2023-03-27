@@ -164,7 +164,7 @@
               <!-- v-for to create one table row for each activity record -->
               <tr
                 v-for="record in activityRecords"
-                v-bind:class=" { javascript: record.type, python: record.type, vue: record.type }"
+                v-bind:class=" { javascript: record.type, vue: record.type, python: record.type }"
               >
                 <td>{{shortDate(record.date)}}</td>
                 <td>{{record.hours}}</td>
@@ -184,8 +184,6 @@
         <div class="card-body">
           <!-- add computed property to calculate the total hours -->
           <p>You have practiced a total of {{ totalHours }} hours</p>
-
-          <!-- Challenge question! Display a list of the total hours for each type.  -->
         </div>
       </div>
     </div>
