@@ -8,12 +8,13 @@
     font-style: bold;
 }
 
+.vue {
+    background-color: orange;
+    font-weight: bold;
+}
+
 .python {
     background-color: pink;
     font-weight: bold;
 }
 
-.vue {
-    background-color: orange;
-    font-weight: bold;
-}

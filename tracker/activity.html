@@ -171,7 +171,7 @@
                 <td>{{record.type}}</td>
                 <td>{{record.medium}}</td>
                 <td>{{record.complete}}</td>
-                <td>{{record.notes}}</td>
+                <td>{{shortNote(record.notes)}}</td>
               </tr>
             </table>
           </div>
@@ -263,6 +263,14 @@
             return new Intl.DateTimeFormat("en-US", { timezone: "UTC" }).format(
               date
             );
+          },
+          shortNote(fullNote) {
+            if (fullNote.length > 40) {
+                // takes a note as an argument and retruns up
+                return fullNote.substring(0, 40) + "...."
+            } else {
+                return fullNote
+            }
           },
         },
         computed: {
