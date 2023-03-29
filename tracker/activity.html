@@ -162,10 +162,7 @@
                 <th>Notes</th>
               </tr>
               <!-- v-for to create one table row for each activity record -->
-              <tr
-                v-for="record in activityRecords"
-                v-bind:class="record.type"
-              >
+              <tr v-for="record in activityRecords" v-bind:class="record.type">
                 <td>{{shortDate(record.date)}}</td>
                 <td>{{record.hours}}</td>
                 <td>{{record.type}}</td>
@@ -227,20 +224,24 @@
               this.errors.push("Select a valid date, today or in the past.");
             }
 
+            // validate hours are between 0 and 24
             if (this.hours <= 0 || this.hours > 24) {
               this.errors.push(
                 "The number of hours must be greater than 0 and less than or equal to 24"
               );
             }
 
+            // validate type is selected
             if (!this.type) {
               this.errors.push("Select a type");
             }
 
+            // validate medium is selected
             if (!this.medium) {
               this.errors.push("Select a medium");
             }
 
+            // validate no errors before creating record
             if (this.errors.length === 0) {
               let record = {
                 date: date,
@@ -259,17 +260,18 @@
               });
             }
           },
+          //   method to formate date
           shortDate(date) {
             return new Intl.DateTimeFormat("en-US", { timezone: "UTC" }).format(
               date
             );
           },
+          //   method to truncate entered note
           shortNote(fullNote) {
             if (fullNote.length > 40) {
-                // takes a note as an argument and retruns up
-                return fullNote.substring(0, 40) + "...."
+              return fullNote.substring(0, 40) + "....";
             } else {
-                return fullNote
+              return fullNote;
             }
           },
         },
